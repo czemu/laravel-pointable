@@ -16,6 +16,10 @@ class Transaction extends Model
      */
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    protected $casts = [
+      'data' => 'array'
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
@@ -60,6 +64,7 @@ class Transaction extends Model
         $transaction->current = $this->getCurrentPoints($pointable) + $amount;
 
         $transaction->message = $message;
+
         if ($data) {
           $transaction->fill($data);
         }

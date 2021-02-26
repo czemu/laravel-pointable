@@ -13,6 +13,7 @@ class CreatePointTransactionsTable extends Migration
             $table->morphs('pointable');
             $table->double('amount');
             $table->double('current');
+            $table->text('data')->nullable();
             $table->timestamps();
         });
     }
